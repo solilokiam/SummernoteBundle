@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="solilokiam_summernote.object_manager">doctrine_mongodb.odm.document_manager</parameter>
+        <parameter key="solilokiam_summernote.asset_manager.class">Solilokiam\SummernoteBundle\Model\SummernoteAssetManager</parameter>
+    </parameters>
+    <services>
+        <service id="solilokiam_summernote.asset_manager" class="%solilokiam_summernote.asset_manager.class%">
+            <argument type="service" id="doctrine_mongodb.odm.document_manager"/>
+            <argument>%solilokiam_summernote.asset.class</argument>
+            <argument>%solilokiam_summernote.destination.path</argument>
+        </service>
+        <service id="solilokiam.form.type.summernote" class="Solilokiam\SummernoteBundle\Form\Type\SummernoteType">
+            <tag name="form.type" alias="summernote"/>
+        </service>
+        <service id="genemu.twig.extension.form" class="Solilokiam\SummernoteBundle\Twig\FormExtension">
+            <tag name="twig.extension"/>
+            <argument type="service" id="twig.form.renderer"/>
+        </service>
+    </services>
+
+    <!--
+    <parameters>
+        <parameter key="solilokiam_summernote.example.class">Solilokiam\SummernoteBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="solilokiam_summernote.example" class="%solilokiam_summernote.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    <!--    <parameters>
+            <parameter key="solilokiam_summernote.asset_manager.class"></parameter>
+        </parameters>
+        <services>
+            <service id="solilokiam_summernote.asset_manager" class="%solilokiam_summernote.asset_manager.class%">
+                <argument type="service" id="%solilokiam_summernote.object_manager%" />
+                <argument>%solilokiam_summernote.asset.class</argument>
+                <argument>%solilokiam_summernote.destination.path</argument>
+            </service>
+        </services>-->
+</container>

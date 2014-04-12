@@ -1,0 +1,42 @@
+{% block form_javascript %}
+    {% spaceless %}
+        {% for child in form %}
+            {{ form_javascript(child) }}
+        {% endfor %}
+    {% endspaceless %}
+{% endblock form_javascript %}
+
+{% block summernote_javascript %}
+    {% javascripts '@SolilokiamSummernoteBundle/Resources/Public/js/summernote.js' %}
+    <script src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+
+
+        $('.summernoteTextArea').summernote({{ solilokiam_summernote_config|raw }});
+
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("summernotefile", file);
+
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: '{{ path('solilokiam_summernote_asset_upload') }}',
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (returnData) {
+                    if (returnData.success) {
+                        console.log(returnData.url);
+                        editor.insertImage(welEditable, returnData.url);
+                    } else {
+                        alert(returnData.message);
+                        console.log(returnData.message);
+                    }
+                }
+            });
+        }
+    </script>
+    {% endjavascripts %}
+{% endblock %}
