@@ -1,0 +1,14 @@
+{
+    "name": "solilokiam/summernote-bundle",
+    "description": "This bundle provides a WYSIWYG editor form type based on summernote",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miquel Company Rodriguez",
+            "email": "miquel@solilokiam.com"
+        }
+    ],
+    "require": {
+
+    }
+}
