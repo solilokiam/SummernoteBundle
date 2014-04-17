@@ -6,7 +6,7 @@
  * Time: 21:04
  */
 
-namespace Solilokiam\SummernoteBundle\Model;
+namespace Solilokiam\SummernoteBundle\Manager;
 
 
 use Doctrine\Common\Persistence\ObjectManager;
@@ -29,11 +29,13 @@ class SummernoteAssetManager
     {
         $assetEntity = new $this->entityName;
         $assetEntity->setFile($file);
-        $assetEntity->setUploadPath($this->destinationPath)
+        $assetEntity->setUploadPath($this->destinationPath);
         $assetEntity->upload();
         $this->objectManager->persist($assetEntity);
         $this->objectManager->flush();
+
+        return $assetEntity;
     }
 
 
-} 
+}

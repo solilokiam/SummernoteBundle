@@ -28,6 +28,9 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
+
+        $loader->load(sprintf('%s.xml', $config['db_driver']));
+        $container->setParameter($this->getAlias() . '.database_type_' . $config['db_driver'], true);
     }
 
     /**

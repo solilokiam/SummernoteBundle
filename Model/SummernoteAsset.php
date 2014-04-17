@@ -8,7 +8,10 @@
 
 namespace Solilokiam\SummernoteBundle\Model;
 
-
+/**
+ * Class SummernoteFileAsset
+ * @package Solilokiam\SummernoteBundle\Model
+ */
 class SummernoteFileAsset
 {
     protected $file;
@@ -91,4 +94,4 @@ class SummernoteFileAsset
     {
         return $this->uploadDir;
     }
-} 
+}
