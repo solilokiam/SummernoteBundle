@@ -1,7 +1,8 @@
 {
-    "name": "solilokiam/summernote-bundle",
+    "name": "solilokiam/summernotebundle",
     "description": "This bundle provides a WYSIWYG editor form type based on summernote",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Miquel Company Rodriguez",
@@ -13,7 +14,6 @@
         "symfony/framework-bundle": "~2.3",
         "symfony/form": "~2.3"
     },
-
     "autoload": {
         "psr-0": { "Solilokiam\\SummernoteBundle": "" }
     },
