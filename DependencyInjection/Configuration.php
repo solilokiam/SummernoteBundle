@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->schalarNode('db_driver')
+                ->scalarNode('db_driver')
                     ->validate()
                         ->ifNotInArray($supportedDrivers)
                         ->thenInvalid('The driver %s is not supported. Please choose onf of '.implode(',',$supportedDrivers))
