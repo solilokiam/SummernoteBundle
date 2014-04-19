@@ -27,4 +27,21 @@ Add SummernoteBundle to your application's `composer.json` file
 }
 ```
 
+Add SummernoteBundle to your application's `AppKernel.php` file
+
+```php
+new Solilokiam\SummernoteBundle\SolilokiamSummernoteBundle()
+```
+
+Configuration
+-------------
+You must determine which object manager are you using. Currently it only supports Doctrine ODM, and doctrine ORM.
+
+`app/config/config.yml`
+
+```yml
+solilokiam_summernote:
+    db_driver: mongodb #supported orm,mongodb for odm
+```
+
 
