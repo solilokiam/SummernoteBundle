@@ -33,6 +33,14 @@ Add SummernoteBundle to your application's `AppKernel.php` file
 new Solilokiam\SummernoteBundle\SolilokiamSummernoteBundle()
 ```
 
+Add Routing information to your application's `routing.yml`:
+
+```yml
+solilokiam_summernote_bundle:
+    resource: "@SolilokiamSummernoteBundle/Resources/config/routing.xml"
+    prefix: /summernote
+``
+
 Configuration
 -------------
 You must determine which object manager are you using. Currently it only supports Doctrine ODM, and doctrine ORM.

@@ -9,7 +9,10 @@
 namespace Solilokiam\SummernoteBundle\Controller;
 
 
-class AssetController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class AssetController extends Controller
 {
     public function uploadAction(Request $request)
     {
