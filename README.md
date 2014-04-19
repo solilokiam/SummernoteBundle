@@ -39,7 +39,7 @@ Add Routing information to your application's `routing.yml`:
 solilokiam_summernote_bundle:
     resource: "@SolilokiamSummernoteBundle/Resources/config/routing.xml"
     prefix: /summernote
-``
+```
 
 Configuration
 -------------
