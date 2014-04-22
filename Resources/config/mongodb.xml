@@ -5,14 +5,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="solilokiam_summernote.object_manager">doctrine_mongodb.odm.document_manager</parameter>
         <parameter key="solilokiam_summernote.asset_manager.class">Solilokiam\SummernoteBundle\Manager\SummernoteAssetManager</parameter>
     </parameters>
     <services>
         <service id="solilokiam_summernote.asset_manager" class="%solilokiam_summernote.asset_manager.class%">
             <argument type="service" id="doctrine_mongodb.odm.document_manager"/>
-            <argument>%solilokiam_summernote.asset.class</argument>
-            <argument>%solilokiam_summernote.destination.path</argument>
+            <argument>%solilokiam_summernote.asset.class%</argument>
+            <argument>%solilokiam_summernote.destination.path%</argument>
         </service>
     </services>
 </container>

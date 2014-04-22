@@ -31,6 +31,10 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
 
         $loader->load(sprintf('%s.xml', $config['db_driver']));
         $container->setParameter($this->getAlias() . '.database_type_' . $config['db_driver'], true);
+
+        $container->setParameter($this->getAlias() . '.asset.class',$config['asset_class']);
+
+        $container->setParameter($this->getAlias() . '.destination.path',$config['asset_path']);
     }
 
     /**
