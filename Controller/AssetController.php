@@ -28,7 +28,7 @@ class AssetController extends Controller
         try {
             $asset = $assetManager->handleUpload($file);
 
-            return new JsonResponse(array('success' => true, 'url' => '/' . $asset->getWebPath()));
+            return new JsonResponse(array('success' => true, 'url' => $asset->getWebPath()));
         } catch (\Exception $e) {
             $errors = $e->getMessage();
 
