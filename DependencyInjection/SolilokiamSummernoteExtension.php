@@ -45,7 +45,8 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
         $bundles = $container->getParameter('kernel.bundles');
 
         $configs = $container->getExtensionConfig($this->getAlias());
-        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        $this->processConfiguration(new Configuration(), $configs);
 
         // Configure Twig if TwigBundle is activated and the option
         // "solilokiam_summernote.auto_configure.twig" is set to TRUE (default value).
