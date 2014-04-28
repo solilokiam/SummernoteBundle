@@ -27,4 +27,8 @@ Add SummernoteBundle to your application's `composer.json` file
 }
 ```
 
+Status
+------
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47/big.png)](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47)
+
 
