@@ -5,5 +5,6 @@
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
     <mapped-superclass name="Solilokiam\SummernoteBundle\Model\SummernoteAsset" collection="solilokiam_sumernote_asset">
         <field name="path" fieldName="path" type="string"/>
+        <field name="uploadPath" fieldName="upload_path" type="string" />
     </mapped-superclass>
 </doctrine-mongo-mapping>

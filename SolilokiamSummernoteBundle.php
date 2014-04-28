@@ -27,13 +27,24 @@ class SolilokiamSummernoteBundle extends Bundle
             realpath(__DIR__ . '/Resources/config/doctrine/model') => 'Solilokiam\SummernoteBundle\Model',
         );
 
-        if(class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass'))
-        {
-            $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, array('solilokiam_summernote.asset_manager'), 'solilokiam_summernote.backend_type_orm'));
+        $ormCompilerClass = 'Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass';
+        if (class_exists($ormCompilerClass)) {
+            $container->addCompilerPass(
+                DoctrineOrmMappingsPass::createXmlMappingDriver(
+                    $mappings,
+                    array('doctrine.orm.entity_manager'),
+                    'fos_user.backend_type_orm'
+                ));
         }
 
-        if (class_exists('Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass')) {
-            $container->addCompilerPass(DoctrineMongoDBMappingsPass::createXmlMappingDriver($mappings, array('solilokiam_summernote.asset_manager'), 'solilokiam_summernote.backend_type_mongodb'));
+        $mongoCompilerClass = 'Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass';
+        if (class_exists($mongoCompilerClass)) {
+            $container->addCompilerPass(
+                DoctrineMongoDBMappingsPass::createXmlMappingDriver(
+                    $mappings,
+                    array('doctrine.odm.mongodb.document_manager'),
+                    'fos_user.backend_type_mongodb'
+                ));
         }
     }
 }
