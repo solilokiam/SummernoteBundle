@@ -42,8 +42,6 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
      */
     public function prepend(ContainerBuilder $container)
     {
-        $bundles = $container->getParameter('kernel.bundles');
-
         $configs = $container->getExtensionConfig($this->getAlias());
 
         $this->processConfiguration(new Configuration(), $configs);
