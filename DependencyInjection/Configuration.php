@@ -27,7 +27,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->schalarNode('db_driver')
+                ->scalarNode('db_driver')
                     ->validate()
                         ->ifNotInArray($supportedDrivers)
                         ->thenInvalid('The driver %s is not supported. Please choose onf of '.implode(',',$supportedDrivers))
@@ -35,7 +35,16 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeOverwritten()
                     ->isRequired()
                     ->cannotBeEmpty()
-                ->end();
+                ->end()
+                ->scalarNode('asset_class')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('asset_path')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+            ->end();
 
 
         return $treeBuilder;

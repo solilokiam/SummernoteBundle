@@ -27,6 +27,31 @@ Add SummernoteBundle to your application's `composer.json` file
 }
 ```
 
+Add SummernoteBundle to your application's `AppKernel.php` file
+
+```php
+new Solilokiam\SummernoteBundle\SolilokiamSummernoteBundle()
+```
+
+Add Routing information to your application's `routing.yml`:
+
+```yml
+solilokiam_summernote_bundle:
+    resource: "@SolilokiamSummernoteBundle/Resources/config/routing.xml"
+    prefix: /summernote
+```
+
+Configuration
+-------------
+You must determine which object manager are you using. Currently it only supports Doctrine ODM, and doctrine ORM.
+
+`app/config/config.yml`
+
+```yml
+solilokiam_summernote:
+    db_driver: mongodb #supported orm,mongodb for odm
+```
+
 Status
 ------
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47/big.png)](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47)

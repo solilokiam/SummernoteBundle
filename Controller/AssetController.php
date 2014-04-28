@@ -9,7 +9,11 @@
 namespace Solilokiam\SummernoteBundle\Controller;
 
 
-class AssetController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
+class AssetController extends Controller
 {
     public function uploadAction(Request $request)
     {
@@ -24,7 +28,7 @@ class AssetController
         try {
             $asset = $assetManager->handleUpload($file);
 
-            return new JsonResponse(array('success' => true, 'url' => '/' . $asset->getWebPath()));
+            return new JsonResponse(array('success' => true, 'url' => $asset->getWebPath()));
         } catch (\Exception $e) {
             $errors = $e->getMessage();
 

@@ -8,17 +8,19 @@
 
 namespace Solilokiam\SummernoteBundle\Model;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Class SummernoteFileAsset
  * @package Solilokiam\SummernoteBundle\Model
  */
-class SummernoteFileAsset
+class SummernoteAsset
 {
     protected $file;
 
     protected $path;
 
-    protected $uploadDir;
+    protected $uploadPath;
 
     /**
      * Sets file.
@@ -53,7 +55,7 @@ class SummernoteFileAsset
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir() . '/' . $this->path;
+            : $this->getUploadPath() . '/' . $this->path;
     }
 
     public function upload()
@@ -64,13 +66,13 @@ class SummernoteFileAsset
 
         $imagename = md5($this->getFile()->getClientOriginalName() . time()) . '.' . $this->getFile()->guessExtension();
 
-        $this->getFile()->move(
+        $newFile = $this->getFile()->move(
             $this->getUploadRootDir(),
             $imagename
         );
 
         // set the path property to the filename where you've saved the file
-        $this->path = $imagename;
+        $this->path = $newFile->getFilename();
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
@@ -80,18 +82,18 @@ class SummernoteFileAsset
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../../../web/' . $this->getUploadPath();
     }
 
-    public function setUploadDir($uploadDir)
+    public function setUploadPath($uploadPath)
     {
-        $this->uploadDir = $uploadDir;
+        $this->uploadPath = $uploadPath;
 
         return $this;
     }
 
-    public function getUploadDir()
+    public function getUploadPath()
     {
-        return $this->uploadDir;
+        return $this->uploadPath;
     }
 }

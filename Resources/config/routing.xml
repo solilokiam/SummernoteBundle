@@ -5,6 +5,6 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="solilokiam_summernote_asset_upload" pattern="/asset/upload" methods="POST">
-        <default key="_controller">SolilokiamSummernoteBundle:AssetController:upload</default>
+        <default key="_controller">SolilokiamSummernoteBundle:Asset:upload</default>
     </route>
 </routes>
