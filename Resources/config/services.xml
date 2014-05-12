@@ -14,6 +14,7 @@
         <service id="genemu.twig.extension.form" class="Solilokiam\SummernoteBundle\Twig\FormExtension">
             <tag name="twig.extension"/>
             <argument type="service" id="twig.form.renderer"/>
+            <argument>%solilokiam_summernote.widget.config%</argument>
         </service>
     </services>
 </container>

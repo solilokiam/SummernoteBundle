@@ -15,10 +15,12 @@ use Symfony\Component\Form\FormView;
 class FormExtension extends \Twig_Extension
 {
     public $renderer;
+    public $widgetConfig;
 
-    function __construct(TwigRendererInterface $renderer)
+    function __construct(TwigRendererInterface $renderer, $widgetConfig)
     {
         $this->renderer = $renderer;
+        $this->widgetConfig = $widgetConfig;
     }
 
     public function getFunctions()
@@ -43,12 +45,9 @@ class FormExtension extends \Twig_Extension
     {
         return array(
             'solilokiam_summernote_config' => "{
-                                                    height: 300,
-                                                    toolbar: [
-                                                        ['style', ['bold', 'italic', 'underline', 'clear']],
-                                                        ['para', ['ul', 'ol', 'paragraph']],
-                                                        ['insert', ['picture', 'link', 'video']]
-                                                    ],
+                                                    height: " . $widgetConfig['height'] . ",
+                                                    focus: " . $widgetConfig['focus'] . ",
+                                                    toolbar: " . json_encode($widgetConfig['toolbar']) . ",
                                                     onImageUpload: function (files, editor, welEditable) {
                                                         sendFile(files[0], editor, welEditable);
                                                     }

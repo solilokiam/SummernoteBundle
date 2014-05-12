@@ -30,11 +30,14 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
         $loader->load('services.xml');
 
         $loader->load(sprintf('%s.xml', $config['db_driver']));
+
         $container->setParameter($this->getAlias() . '.backendtype_' . $config['db_driver'], true);
 
         $container->setParameter($this->getAlias() . '.asset.class',$config['asset_class']);
 
         $container->setParameter($this->getAlias() . '.destination.path',$config['asset_path']);
+
+        $this->configWidget($container, $config);
     }
 
     /**
@@ -46,11 +49,7 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
 
         $this->processConfiguration(new Configuration(), $configs);
 
-        // Configure Twig if TwigBundle is activated and the option
-        // "solilokiam_summernote.auto_configure.twig" is set to TRUE (default value).
-        //if (true === isset($bundles['TwigBundle']) && true === $config['auto_configure']['twig']) {
         $this->configureTwigBundle($container);
-        //}
     }
 
     protected function configureTwigBundle(ContainerBuilder $container)
@@ -65,6 +64,21 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
                     break;
             }
         }
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param $config
+     */
+    protected function configWidget(ContainerBuilder $container, $config)
+    {
+        $widgetConfig = array(
+            'width' => $config['width'],
+            'focus' => $config['focus'],
+            'toolbar' => $config['toolbar']
+        );
+
+        $container->setParameter($this->getAlias() . '.widget.config', $widgetConfig);
     }
 
 

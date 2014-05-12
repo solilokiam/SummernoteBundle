@@ -24,6 +24,12 @@ class Configuration implements ConfigurationInterface
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
         $supportedDrivers = array('orm', 'mongodb');
+        $defaultToolbar = array(
+            array('style' => array('bold', 'italic', 'underline', 'clear'])),
+            array(
+                'para' => array('ul', 'ol', 'paragraph'),
+                array('insert' => array('picture', 'link', 'video'))
+            );
 
         $rootNode
             ->children()
@@ -44,6 +50,16 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
+            ->integerNode('width')
+            ->min(1)
+            ->defaultValue(300)
+            ->end()
+            ->booleanNode('focus')
+            ->defaultValue(true)
+            ->end()
+            ->arrayNode('toolbar')
+            ->defaultValue($defaultToolbar)
+            ->end();
             ->end();
 
 
