@@ -45,9 +45,9 @@ class FormExtension extends \Twig_Extension
     {
         return array(
             'solilokiam_summernote_config' => "{
-                                                    height: " . $widgetConfig['height'] . ",
-                                                    focus: " . $widgetConfig['focus'] . ",
-                                                    toolbar: " . json_encode($widgetConfig['toolbar']) . ",
+                                                    height: " . $this->widgetConfig['height'] . ",
+                                                    focus: " . $this->widgetConfig['focus'] . ",
+                                                    toolbar: " . json_encode($this->widgetConfig['toolbar']) . ",
                                                     onImageUpload: function (files, editor, welEditable) {
                                                         sendFile(files[0], editor, welEditable);
                                                     }

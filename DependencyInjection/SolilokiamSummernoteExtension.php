@@ -73,7 +73,7 @@ class SolilokiamSummernoteExtension extends Extension implements PrependExtensio
     protected function configWidget(ContainerBuilder $container, $config)
     {
         $widgetConfig = array(
-            'width' => $config['width'],
+            'height' => $config['height'],
             'focus' => $config['focus'],
             'toolbar' => $config['toolbar']
         );

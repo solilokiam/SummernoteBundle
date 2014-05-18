@@ -80,7 +80,11 @@ solilokiam_summernote:
     ...
     focus: true
 ```
-* **toolbar**:
+* **toolbar**: Configure toolbars of the widget.
+```
+  solilokiam_summernote:
+    ...
+    toolbar:
 
 Status
 ------

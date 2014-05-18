@@ -25,9 +25,9 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $supportedDrivers = array('orm', 'mongodb');
         $defaultToolbar = array(
-            array('style' => array('bold', 'italic', 'underline', 'clear')),
-            array('para' => array('ul', 'ol', 'paragraph')),
-            array('insert' => array('picture', 'link', 'video'))
+            array('style', array('bold', 'italic', 'underline', 'clear')),
+            array('para', array('ul', 'ol', 'paragraph')),
+            array('insert', array('picture', 'link', 'video'))
         );
 
         $rootNode
@@ -49,16 +49,29 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
-                ->integerNode('width')
-                  ->min(1)
+            ->integerNode('height')
+            ->min(1)
                   ->defaultValue(300)
                 ->end()
                 ->booleanNode('focus')
                   ->defaultValue(true)
                 ->end()
                 ->arrayNode('toolbar')
-                  ->defaultValue($defaultToolbar)
-                ->end()
+            ->children()
+            ->arrayNode('style')
+            ->prototype('scalar')->end()
+            ->end()
+            ->arrayNode('layout')
+            ->prototype('scalar')->end()
+            ->end()
+            ->arrayNode('insert')
+            ->prototype('scalar')->end()
+            ->end()
+            ->arrayNode('misc')
+            ->prototype('scalar')->end()
+            ->end()
+            ->end()
+            ->end()
             ->end();
 
 
