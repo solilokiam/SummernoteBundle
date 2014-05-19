@@ -1,8 +1,5 @@
 SummernoteBundle
 ================
-Warning
--------
-This bundle is in a very alpha state. It's still a work in progress.
 
 What is SummernoteBundle?
 -------------------------
@@ -41,8 +38,8 @@ solilokiam_summernote_bundle:
     prefix: /summernote
 ```
 
-Configuration
--------------
+Minimal Configuration
+---------------------
 You must determine which object manager are you using. Currently it only supports Doctrine ODM, and doctrine ORM.
 
 `app/config/config.yml`
@@ -51,6 +48,67 @@ You must determine which object manager are you using. Currently it only support
 solilokiam_summernote:
     db_driver: mongodb #supported orm,mongodb for odm
 ```
+
+You must also tell which class is going to inherit the bundle asset class.
+
+```yml
+solilokiam_summernote:
+    asset_class: Acme\DemoBundle\Document\Asset
+```
+
+An example for the asset class can be like this (doctrine odm):
+
+```php
+<?php
+
+namespace Acme\DemoBundle\Document;
+
+
+use Solilokiam\SummernoteBundle\Model\SummernoteAsset;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * Class Asset
+ * @package Acme\DemoBundle\Document
+ * @MongoDB\Document(collection="assets")
+ */
+class Asset extends SummernoteAsset
+{
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
+
+    ...
+}
+
+```
+
+Additional Configuration
+------------------------
+Summernote supports some configuration parameters. This parameters can configured application wide in config.yml.
+
+* **width**: This is the width of summernote widget
+```yml
+solilokiam_summernote:
+   ...
+   width: 500
+```
+* **focus**: Autofocus the widget.
+```yml
+ solilokiam_summernote:
+    ...
+    focus: true
+```
+* **toolbar**: Configure toolbars of the widget.Every line in toolbar config is a different button group. You can check available buttons at [summernote documentation](http://hackerwins.github.io/summernote/features.html#customtoolbar)
+```yml
+  solilokiam_summernote:
+    ...
+    toolbar:
+        - { name: style, buttons: ['bold', 'italic', 'underline', 'clear'] }
+        - { name: paragraph, buttons: ['ul', 'ol', 'paragraph']}
+```
+
 
 Status
 ------
