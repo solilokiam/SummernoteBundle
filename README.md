@@ -53,7 +53,7 @@ You must also tell which class is going to inherit the bundle asset class.
 
 ```yml
 solilokiam_summernote:
-    asset_class: 'AcmeAssetClass'
+    asset_class: Acme\DemoBundle\Document\Asset
 ```
 
 An example for the asset class can be like this (doctrine odm):
