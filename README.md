@@ -61,6 +61,26 @@ An example for the asset class can be like this (doctrine odm):
 ```php
 <?php
 
+namespace Acme\DemoBundle\Document;
+
+
+use Solilokiam\SummernoteBundle\Model\SummernoteAsset;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * Class Asset
+ * @package Acme\DemoBundle\Document
+ * @MongoDB\Document(collection="assets")
+ */
+class Asset extends SummernoteAsset
+{
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
+
+    ...
+}
 
 ```
 
@@ -80,7 +100,7 @@ solilokiam_summernote:
     ...
     focus: true
 ```
-* **toolbar**: Configure toolbars of the widget.
+* **toolbar**: Configure toolbars of the widget.Every line in toolbar config is a different button group. You can check available buttons at [summernote documentation](http://hackerwins.github.io/summernote/features.html#customtoolbar)
 ```yml
   solilokiam_summernote:
     ...
@@ -88,7 +108,7 @@ solilokiam_summernote:
         - { name: style, buttons: ['bold', 'italic', 'underline', 'clear'] }
         - { name: paragraph, buttons: ['ul', 'ol', 'paragraph']}
 ```
-Every line in toolbar config is a different button group. You can check available buttons at [summernote documentation](http://hackerwins.github.io/summernote/features.html#customtoolbar)
+
 
 Status
 ------
