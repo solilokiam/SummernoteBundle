@@ -25,9 +25,9 @@ class Configuration implements ConfigurationInterface
         // more information on that topic.
         $supportedDrivers = array('orm', 'mongodb');
         $defaultToolbar = array(
-            array('style', array('bold', 'italic', 'underline', 'clear')),
-            array('para', array('ul', 'ol', 'paragraph')),
-            array('insert', array('picture', 'link', 'video'))
+            array('name' => 'style','buttons' => array('bold', 'italic', 'underline', 'clear')),
+            array('name' => 'para', 'buttons' => array('ul', 'ol', 'paragraph')),
+            array('name' => 'insert', 'buttons' => array('picture', 'link', 'video'))
         );
 
         $rootNode
@@ -49,29 +49,24 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
-            ->integerNode('height')
-            ->min(1)
-                  ->defaultValue(300)
+                ->integerNode('height')
+                    ->min(1)
+                    ->defaultValue(300)
                 ->end()
                 ->booleanNode('focus')
-                  ->defaultValue(true)
+                    ->defaultValue(true)
                 ->end()
                 ->arrayNode('toolbar')
-            ->children()
-            ->arrayNode('style')
-            ->prototype('scalar')->end()
-            ->end()
-            ->arrayNode('layout')
-            ->prototype('scalar')->end()
-            ->end()
-            ->arrayNode('insert')
-            ->prototype('scalar')->end()
-            ->end()
-            ->arrayNode('misc')
-            ->prototype('scalar')->end()
-            ->end()
-            ->end()
-            ->end()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('name')->end()
+                            ->arrayNode('buttons')
+                                ->prototype('scalar')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                    ->defaultValue($defaultToolbar)
+                ->end()
             ->end();
 
 

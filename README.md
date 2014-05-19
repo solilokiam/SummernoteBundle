@@ -81,10 +81,14 @@ solilokiam_summernote:
     focus: true
 ```
 * **toolbar**: Configure toolbars of the widget.
-```
+```yml
   solilokiam_summernote:
     ...
     toolbar:
+        - { name: style, buttons: ['bold', 'italic', 'underline', 'clear'] }
+        - { name: paragraph, buttons: ['ul', 'ol', 'paragraph']}
+```
+Every line in toolbar config is a different button group. You can check available buttons at [summernote documentation](http://hackerwins.github.io/summernote/features.html#customtoolbar)
 
 Status
 ------

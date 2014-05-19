@@ -43,11 +43,18 @@ class FormExtension extends \Twig_Extension
 
     public function getGlobals()
     {
+        $toolbar = array();
+
+        foreach($this->widgetConfig['toolbar'] as $buttonGroup)
+        {
+            $toolbar[] = array($buttonGroup['name'],$buttonGroup['buttons']);
+        }
+
         return array(
             'solilokiam_summernote_config' => "{
                                                     height: " . $this->widgetConfig['height'] . ",
                                                     focus: " . $this->widgetConfig['focus'] . ",
-                                                    toolbar: " . json_encode($this->widgetConfig['toolbar']) . ",
+                                                    toolbar: " . json_encode($toolbar) . ",
                                                     onImageUpload: function (files, editor, welEditable) {
                                                         sendFile(files[0], editor, welEditable);
                                                     }
