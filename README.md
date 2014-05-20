@@ -5,6 +5,15 @@ What is SummernoteBundle?
 -------------------------
 Summernotebundle integrates [SummerNote](http://hackerwins.github.io/summernote/) WYSIWYG Editor into Symfony form type.
 
+Status
+------
+[![Build Status](https://travis-ci.org/solilokiam/SummernoteBundle.svg?branch=master)](https://travis-ci.org/solilokiam/SummernoteBundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47/mini.png)](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47)
+[![Latest Stable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/stable.png)](https://packagist.org/packages/solilokiam/summernotebundle)
+[![Total Downloads](https://poser.pugx.org/solilokiam/summernotebundle/downloads.png)](https://packagist.org/packages/solilokiam/summernotebundle)
+[![Latest Unstable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/unstable.png)](https://packagist.org/packages/solilokiam/summernotebundle)
+[![License](https://poser.pugx.org/solilokiam/summernotebundle/license.png)](https://packagist.org/packages/solilokiam/summernotebundle)
+
 Requirements
 ------------
 Minimum requirements for this bundle are:
@@ -109,11 +118,35 @@ solilokiam_summernote:
         - { name: paragraph, buttons: ['ul', 'ol', 'paragraph']}
 ```
 
+Usage
+-----
 
-Status
-------
-[![Build Status](https://travis-ci.org/solilokiam/SummernoteBundle.svg?branch=master)](https://travis-ci.org/solilokiam/SummernoteBundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47/mini.png)](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47)
-[![Latest Stable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/stable.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![Total Downloads](https://poser.pugx.org/solilokiam/summernotebundle/downloads.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![Latest Unstable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/unstable.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![License](https://poser.pugx.org/solilokiam/summernotebundle/license.png)](https://packagist.org/packages/solilokiam/summernotebundle)
+Summernote bundle provides a formtype. This example form uses it:
 
+```php
+class TestFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        ...
+        $builder->add('test_text', 'summernote');
+        ...
+
+    }
+    ...
+
+}
+```
+
+You need also to add some twig tags in your templates to import all CSS and JS needed to make summernote work:
+```twig
+...
+{% block stylesheets %}
+    {{ summernote_form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ summernote_form_javascript(form) }}
+{% endblock %}
+```
 

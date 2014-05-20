@@ -26,8 +26,8 @@ class FormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'form_javascript' => new \Twig_Function_Method($this, 'renderJavascript', array('is_safe' => array('html'))),
-            'form_stylesheet' => new \Twig_Function_Method($this, 'renderStylesheet', array('is_safe' => array('html'))),
+            'summernote_form_javascript' => new \Twig_Function_Method($this, 'renderJavascript', array('is_safe' => array('html'))),
+            'summernote_form_stylesheet' => new \Twig_Function_Method($this, 'renderStylesheet', array('is_safe' => array('html'))),
         );
     }
 
@@ -68,4 +68,4 @@ class FormExtension extends \Twig_Extension
         return 'solilokiamsummernotebundle.twig.extension.form';
     }
 
-} 
+}
