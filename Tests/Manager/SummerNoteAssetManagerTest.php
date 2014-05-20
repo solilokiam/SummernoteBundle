@@ -17,6 +17,7 @@ class SummerNoteAssetManagerTest extends \PHPUnit_Framework_TestCase
     protected $assetManager;
     protected $objectManager;
     protected $destinationPath;
+    protected $uploadedFile;
 
     public function setUp()
     {
@@ -26,20 +27,21 @@ class SummerNoteAssetManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->objectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
 
-        $this->destinationPath = __DIR__;
+        $this->destinationPath = '/tmp';
 
         $this->assetManager = new SummernoteAssetManager($this->objectManager,'Solilokiam\SummernoteBundle\Model\SummernoteAsset',$this->destinationPath);
+
+        touch(__DIR__.'/uploadtestfile');
+        $this->uploadedFile = new UploadedFile(__DIR__.'/uploadtestfile','uploadtestfile',null,null,null,true);
     }
 
     public function testUpload()
     {
-        $testUploadedFile = new UploadedFile(__DIR__.'/uploadtestfile','uploadtestfile');
-
         $this->objectManager->expects($this->once())->method('persist');
         $this->objectManager->expects($this->once())->method('flush');
 
-        $return = $this->assetManager->handleUpload($testUploadedFile);
+        $return = $this->assetManager->handleUpload($this->uploadedFile);
 
-        $this->assertInstanceOf('Doctrine\Common\Persistence\ObjectManager',$return);
+        $this->assertInstanceOf('Solilokiam\SummernoteBundle\Model\SummernoteAsset',$return);
     }
 }

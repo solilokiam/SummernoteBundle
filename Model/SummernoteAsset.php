@@ -82,7 +82,7 @@ class SummernoteAsset
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__ . '/../../../../../../web/' . $this->getUploadPath();
+        return $this->getUploadPath();
     }
 
     public function setUploadPath($uploadPath)
