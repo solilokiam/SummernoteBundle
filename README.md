@@ -112,6 +112,7 @@ solilokiam_summernote:
 
 Status
 ------
+[![Build Status](https://travis-ci.org/solilokiam/SummernoteBundle.svg?branch=master)](https://travis-ci.org/solilokiam/SummernoteBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47/mini.png)](https://insight.sensiolabs.com/projects/5ac190d8-368d-463e-bdcf-eb414242de47)
 [![Latest Stable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/stable.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![Total Downloads](https://poser.pugx.org/solilokiam/summernotebundle/downloads.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![Latest Unstable Version](https://poser.pugx.org/solilokiam/summernotebundle/v/unstable.png)](https://packagist.org/packages/solilokiam/summernotebundle) [![License](https://poser.pugx.org/solilokiam/summernotebundle/license.png)](https://packagist.org/packages/solilokiam/summernotebundle)
 
