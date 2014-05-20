@@ -64,11 +64,11 @@ class SummernoteAsset
             return;
         }
 
-        $imagename = md5($this->getFile()->getClientOriginalName() . time()) . '.' . $this->getFile()->guessExtension();
+        $filename = md5($this->getFile()->getClientOriginalName() . time()) . '.' . $this->getFile()->guessExtension();
 
         $newFile = $this->getFile()->move(
             $this->getUploadRootDir(),
-            $imagename
+            $filename
         );
 
         // set the path property to the filename where you've saved the file
