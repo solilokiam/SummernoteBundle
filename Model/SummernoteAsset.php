@@ -64,11 +64,11 @@ class SummernoteAsset
             return;
         }
 
-        $imagename = md5($this->getFile()->getClientOriginalName() . time()) . '.' . $this->getFile()->guessExtension();
+        $filename = md5($this->getFile()->getClientOriginalName() . time()) . '.' . $this->getFile()->guessExtension();
 
         $newFile = $this->getFile()->move(
             $this->getUploadRootDir(),
-            $imagename
+            $filename
         );
 
         // set the path property to the filename where you've saved the file
@@ -82,7 +82,7 @@ class SummernoteAsset
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__ . '/../../../../../../web/' . $this->getUploadPath();
+        return $this->getUploadPath();
     }
 
     public function setUploadPath($uploadPath)
