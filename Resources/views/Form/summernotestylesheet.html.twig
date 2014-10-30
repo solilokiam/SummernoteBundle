@@ -1,11 +1,3 @@
-{% block form_stylesheet %}
-    {% spaceless %}
-        {% for child in form %}
-            {{ form_stylesheet(child) }}
-        {% endfor %}
-    {% endspaceless %}
-{% endblock form_stylesheet %}
-
 {% block summernote_stylesheet %}
     {% spaceless %}
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
