@@ -11,7 +11,7 @@
         <service id="solilokiam.form.type.summernote" class="Solilokiam\SummernoteBundle\Form\Type\SummernoteType">
             <tag name="form.type" alias="summernote"/>
         </service>
-        <service id="genemu.twig.extension.form" class="Solilokiam\SummernoteBundle\Twig\FormExtension">
+        <service id="solilokiamsummernote.twig.extension.form" class="Solilokiam\SummernoteBundle\Twig\FormExtension">
             <tag name="twig.extension"/>
             <argument type="service" id="twig.form.renderer"/>
             <argument>%solilokiam_summernote.widget.config%</argument>

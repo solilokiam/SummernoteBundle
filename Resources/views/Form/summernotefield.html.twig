@@ -1,5 +1,6 @@
 {% block summernote_widget %}
     {% spaceless %}
-        <textarea class="summernoteTextArea"></textarea>
+        {% set required = "" %}
+        <textarea class="summernoteTextArea" {{ block('widget_attributes') }}>{% if value is not empty %}{{ value }}{% endif %}</textarea>
     {% endspaceless %}
 {% endblock %}
