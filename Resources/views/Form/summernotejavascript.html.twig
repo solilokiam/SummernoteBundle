@@ -1,11 +1,3 @@
-{% block form_javascript %}
-    {% spaceless %}
-        {% for child in form %}
-            {{ form_javascript(child) }}
-        {% endfor %}
-    {% endspaceless %}
-{% endblock form_javascript %}
-
 {% block summernote_javascript %}
     {% javascripts '@SolilokiamSummernoteBundle/Resources/public/js/summernote.js' %}
     <script src="{{ asset_url }}"></script>
